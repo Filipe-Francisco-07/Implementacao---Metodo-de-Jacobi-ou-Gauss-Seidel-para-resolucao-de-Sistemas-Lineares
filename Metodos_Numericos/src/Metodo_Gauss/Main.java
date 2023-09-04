@@ -1,27 +1,24 @@
-package Metodo_Gauss;
+package gauss;
 
 import java.util.Arrays;
-
 public class Main {
-    public static void main(String[] args) {
-        double[][] matriz = {
-            {1, 1, 1},
-            {4, 4, 2},
-            {2, 1, -1}
-        };
+	public static void main(String[] args) {
+	double[][] A = {
+			{2, 1,4},
+			{3,-5,2},
+			{1,2,-3}
+	};
+	double[] y = {3,4.5,-6.5};
+	if(Gauss.verConvergencia(A)) {
+		System.out.println("e convergente.");
+	}else {
+		System.out.println("podera nao convergir.");
+	}
+	Gauss.eliminacao(A, y);
+	double[] solucao = Gauss.retrossubstituicao(A, y);
 
-        double[] vetor = {1, 2, 0};
-        
-        if(Gauss.verConvergente(matriz)) {
-        	System.out.println("é convergente.");
-        }else {
-        	System.out.println("não é convergente.");
-        }
+	System.out.println("Solucao:");
+	System.out.println(Arrays.toString(solucao));	
+	}
 
-        Gauss.eliminacao(matriz, vetor);
-        double[] solucao = Gauss.retrossubstituicao(matriz, vetor);
-
-        System.out.println("Solução:");
-        System.out.println(Arrays.toString(solucao));
-    }
 }
